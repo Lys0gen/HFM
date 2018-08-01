@@ -778,4 +778,52 @@ political_decisions = {
 		ai_will_do = { factor = 1 }
 	}
 	
+	unite_RPL_with_canada = {
+		picture = "canadian_dominion"
+			potential = {
+				tag = RPL
+				exists = CAN
+				ai = no
+				CAN = {
+					ai = yes
+				}
+				NOT = { has_country_flag = unite_RPL_with_canada }
+			}
+
+		allow = {
+			year = 1865
+			war = no
+			CAN = {
+				war = no
+			}
+		}
+
+		effect = {
+			set_country_flag = unite_RPL_with_canada    
+			add_accepted_culture = french_canadian
+			48 = {
+			random_country = {
+				limit = {
+					tag = CAN
+					ai = yes
+					THIS = { ai = yes }
+				}
+				inherit = THIS
+			}
+			random_country = {
+				limit = {
+					tag = CAN
+					ai = yes
+					THIS = { ai = no }
+				}
+				any_owned = { secede_province = THIS }
+				THIS = {
+					random_owned = {
+						limit = { province_id = 57 }
+						owner = { capital = 57 }
+					}                     
+					change_tag = CAN
+				}	
+			}
+		}
 }

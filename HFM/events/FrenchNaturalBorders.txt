@@ -276,7 +276,15 @@ country_event = {
 		}
 		FROM = {
 			any_owned = {
-				limit = { region = SPA_498 NOT = { province_id = 502 } }
+				limit = { 
+					OR = { 
+						AND = {
+							region = SPA_498
+							NOT = { province_id = 502 }
+						}
+						is_core = PHL
+					}
+				}
 				secede_province = THIS
 			}
 			prestige = -70
@@ -293,10 +301,6 @@ country_event = {
 				}
 				consciousness = 10
 				militancy = 10
-			}
-			any_owned = {
-				limit = { is_core = PHL }
-				secede_province = THIS
 			}
 		}
 		any_greater_power = {
